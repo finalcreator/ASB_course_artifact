@@ -100,11 +100,6 @@ type(circuits_df)
 
 # COMMAND ----------
 
-# Show first 20 records
-circuits_df.show()
-
-# COMMAND ----------
-
 # Better way to display tables
 display(circuits_df)
 
@@ -112,11 +107,6 @@ display(circuits_df)
 
 # See the schema of our data
 circuits_df.printSchema()
-
-# COMMAND ----------
-
-# describe
-circuits_df.describe().show()
 
 # COMMAND ----------
 
