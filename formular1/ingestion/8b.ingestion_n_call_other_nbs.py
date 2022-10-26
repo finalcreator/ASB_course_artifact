@@ -83,6 +83,19 @@ circuits_schema = StructType(
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ###### Run another notebook and make everything in the notebooks avaliable in this notebook
+
+# COMMAND ----------
+
+# MAGIC %run "../includes/configuration"
+
+# COMMAND ----------
+
+# MAGIC %run "../includes/common_functions"
+
+# COMMAND ----------
+
 # I have already defined 'raw_folder_path' and 'processed_folder_path' inside the configuration notebook
 raw_folder_path
 
@@ -104,7 +117,8 @@ raw_folder_path
 circuits_df = spark.read \
 .option("header", True) \
 .schema(circuits_schema) \
-.csv('/mnt/adfcourseanyistaccdl/raw-ctnr/raw/circuits.csv') 
+.csv(f"{raw_folder_path}/circuits.csv") 
+#.csv('/mnt/adfcourseanyistaccdl/raw-ctnr/raw/circuits.csv') 
 # do not have to use .csv('dbfs:/mnt/adfcourseanyistaccdl/raw-ctnr/raw/circuits.csv')
 
 # COMMAND ----------
@@ -200,7 +214,10 @@ display(circuits_renamed_df)
 
 from pyspark.sql.functions import current_timestamp
 # add the ingestion_date column to the dataframe
-circuits_final_df = circuits_renamed_df.withColumn("ingestion_date", current_timestamp())
+## circuits_final_df = circuits_renamed_df.withColumn("ingestion_date", current_timestamp())
+
+# use the function in the common_functions notebook
+circuits_final_df = add_ingestion_date(circuits_final_df)
 
 display(circuits_final_df)
 
@@ -225,7 +242,8 @@ display(circuits_test_df)
 #circuits_final_df.write.parquet("/mnt/adfcourseanyistaccdl/processed-ctnr/circuits")
 # make it rerunable by overwriting the data
 
-circuits_final_df.write.mode("overwrite").parquet("/mnt/adfcourseanyistaccdl/processed-ctnr/circuits")
+circuits_final_df.write.mode("overwrite").parquet(f"{processed_folder_path}/circuits")
+#circuits_final_df.write.mode("overwrite").parquet("/mnt/adfcourseanyistaccdl/processed-ctnr/circuits")
 
 # COMMAND ----------
 
@@ -240,5 +258,6 @@ circuits_final_df.write.mode("overwrite").parquet("/mnt/adfcourseanyistaccdl/pro
 # COMMAND ----------
 
 ## lets try and read that data
-df = spark.read.parquet("/mnt/adfcourseanyistaccdl/processed-ctnr/circuits")
+df = spark.read.parquet(f"{processed_folder_path}/circuits")
+#df = spark.read.parquet("/mnt/adfcourseanyistaccdl/processed-ctnr/circuits")
 display(df)
