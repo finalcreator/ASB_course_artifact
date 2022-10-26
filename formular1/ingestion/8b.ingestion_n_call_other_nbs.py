@@ -17,36 +17,8 @@
 
 # COMMAND ----------
 
-# display all the mountables
-display(dbutils.fs.mounts())
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC * NOTE: %fs is a shotcut to dbutils.fs.mounts()
-# MAGIC 
-# MAGIC 
-# MAGIC Drill down further into raw-cntr
-
-# COMMAND ----------
-
-# MAGIC %fs
-# MAGIC ls /mnt/adfcourseanyistaccdl/raw-ctnr
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC Drill down further into the raw folder
-
-# COMMAND ----------
-
-# MAGIC %fs
-# MAGIC ls /mnt/adfcourseanyistaccdl/raw-ctnr/raw/
-
-# COMMAND ----------
-
-# you can unmout this way
-##dbutils.fs.unmount('/mnt/adfcourseanyistaccdl/raw')
 
 # COMMAND ----------
 
@@ -77,9 +49,10 @@ circuits_schema = StructType(
 
 # COMMAND ----------
 
-* instead of hard coding the container paths
-    * we will puth the path into a new notebook
-    * then we will call that notebook
+# MAGIC %md
+# MAGIC * instead of hard coding the container paths
+# MAGIC     * we will puth the path into a new notebook
+# MAGIC     * then we will call that notebook
 
 # COMMAND ----------
 
@@ -217,7 +190,7 @@ from pyspark.sql.functions import current_timestamp
 ## circuits_final_df = circuits_renamed_df.withColumn("ingestion_date", current_timestamp())
 
 # use the function in the common_functions notebook
-circuits_final_df = add_ingestion_date(circuits_final_df)
+circuits_final_df = add_ingestion_date(circuits_renamed_df)
 
 display(circuits_final_df)
 

@@ -77,17 +77,6 @@ circuits_schema = StructType(
 
 # COMMAND ----------
 
-* instead of hard coding the container paths
-    * we will puth the path into a new notebook
-    * then we will call that notebook
-
-# COMMAND ----------
-
-# I have already defined 'raw_folder_path' and 'processed_folder_path' inside the configuration notebook
-raw_folder_path
-
-# COMMAND ----------
-
 # https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.csv.html#pyspark.sql.DataFrameReader.csv
 #circuits_df = spark.read.csv('dbfs:/mnt/adfcourseanyistaccdl/raw-ctnr/raw/circuits.csv', header=true)
 # read csv with the headers recognised
