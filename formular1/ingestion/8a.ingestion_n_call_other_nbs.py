@@ -207,20 +207,3 @@ display(circuits_test_df)
 
 circuits_final_df.write.mode("overwrite").parquet(f"{processed_folder_path}/circuits")
 #circuits_final_df.write.mode("overwrite").parquet("/mnt/adfcourseanyistaccdl/processed-ctnr/circuits")
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC * lets use the ls comand to list the file system in the path: /mnt/adfcourseanyistaccdl/processed-ctnr/circuits
-
-# COMMAND ----------
-
-# MAGIC %fs
-# MAGIC ls /mnt/adfcourseanyistaccdl/processed-ctnr/circuits
-
-# COMMAND ----------
-
-## lets try and read that data
-df = spark.read.parquet(f"{processed_folder_path}/circuits")
-#df = spark.read.parquet("/mnt/adfcourseanyistaccdl/processed-ctnr/circuits")
-display(df)
