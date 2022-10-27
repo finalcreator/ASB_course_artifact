@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC run the configuration notebook from here to import all the variables in it
+# MAGIC Run the configuration notebook from here to import all the variables in it
 
 # COMMAND ----------
 
@@ -18,6 +18,7 @@
 
 # COMMAND ----------
 
+# read parquet files
 race_results_df = spark.read.parquet(f"{presentation_folder_path}/race_results")
 
 # COMMAND ----------
