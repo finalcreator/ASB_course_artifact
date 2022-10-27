@@ -117,11 +117,20 @@ def mount_adls(container_name):
 
 raw_ctnr_name = "raw-ctnr"
 proc_ctnr_name = "processed-ctnr"
+pres_ctnr_name = "presentation-ctnr"
 
 # COMMAND ----------
 
 mount_adls(raw_ctnr_name)
+
+
+# COMMAND ----------
+
 mount_adls(proc_ctnr_name)
+
+# COMMAND ----------
+
+mount_adls(pres_ctnr_name)
 
 # COMMAND ----------
 
@@ -140,9 +149,14 @@ dbutils.fs.ls("/mnt/{}/{}".format(storage_account_name, proc_ctnr_name))
 
 # COMMAND ----------
 
+dbutils.fs.ls("/mnt/{}/{}".format(storage_account_name, pres_ctnr_name))
+
+# COMMAND ----------
+
 ## you can unmount containers if you want
 #dbutils.fs.unmount("/mnt/{}/{}".format(storage_account_name, raw_ctnr_name))
 #dbutils.fs.unmount("/mnt/{}/{}".format(storage_account_name, proc_ctnr_name))
+#dbutils.fs.unmount("/mnt/{}/{}".format(storage_account_name, pres_ctnr_name))
 
 # COMMAND ----------
 
