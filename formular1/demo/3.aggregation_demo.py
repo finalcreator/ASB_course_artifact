@@ -45,7 +45,7 @@ display(demo_df)
 
 # COMMAND ----------
 
-from pyspark.sql.functions import count, countDistinct
+from pyspark.sql.functions import count, countDistinct, sum
 
 # COMMAND ----------
 

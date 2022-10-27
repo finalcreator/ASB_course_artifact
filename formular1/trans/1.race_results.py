@@ -5,7 +5,7 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC run the configuration notebook from here to import all the variables in it
+# MAGIC Run the configuration notebook from here to import all the variables in it
 
 # COMMAND ----------
 
