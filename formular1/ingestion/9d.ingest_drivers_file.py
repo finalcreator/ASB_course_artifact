@@ -88,11 +88,12 @@ drivers_final_df = drivers_with_columns_df.drop(col("url"))
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##### Step 4 - Write to output to processed container in parquet format
+# MAGIC ##### Step 4 - Create a Managed Table and Write to output to processed container in parquet format
 
 # COMMAND ----------
 
-drivers_final_df.write.mode("overwrite").parquet(f"{processed_folder_path}/drivers")
+# we can now create a managed table in the database we created in "9.create_processed_database"
+drivers_final_df.write.mode("overwrite").format("parquet").saveAsTable("f1_processed.drivers")
 
 # COMMAND ----------
 

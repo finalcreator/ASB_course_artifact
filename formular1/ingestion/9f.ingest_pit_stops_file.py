@@ -67,11 +67,12 @@ final_df = pit_stops_with_ingestion_date_df.withColumnRenamed("driverId", "drive
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##### Step 3 - Write to output to processed container in parquet format
+# MAGIC ##### Step 3 - Create a Managed Table and Write to output to processed container in parquet format
 
 # COMMAND ----------
 
-final_df.write.mode("overwrite").parquet(f"{processed_folder_path}/pit_stops")
+# we can now create a managed table in the database we created in "9.create_processed_database"
+final_df.write.mode("overwrite").format("parquet").saveAsTable("f1_processed.pit_stops")
 
 # COMMAND ----------
 

@@ -93,11 +93,12 @@ results_final_df = results_with_ingestion_date_df.drop(col("statusId"))
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##### Step 4 - Write to output to processed container in parquet format
+# MAGIC ##### Step 4 -  Create a Managed Table and Write to output to processed container in parquet format
 
 # COMMAND ----------
 
-results_final_df.write.mode("overwrite").partitionBy('race_id').parquet(f"{processed_folder_path}/results")
+# we can now create a managed table in the database we created in "9.create_processed_database"
+results_final_df.write.mode("overwrite").format("parquet").saveAsTable("f1_processed.results")
 
 # COMMAND ----------
 

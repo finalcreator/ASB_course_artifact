@@ -65,11 +65,12 @@ final_df = lap_times_with_ingestion_date_df.withColumnRenamed("driverId", "drive
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##### Step 3 - Write to output to processed container in parquet format
+# MAGIC ##### Step 3 - Create a Managed Table and Write to output to processed container in parquet format
 
 # COMMAND ----------
 
-final_df.write.mode("overwrite").parquet(f"{processed_folder_path}/lap_times")
+# we can now create a managed table in the database we created in "9.create_processed_database"
+final_df.write.mode("overwrite").format("parquet").saveAsTable("f1_processed.lap_times")
 
 # COMMAND ----------
 

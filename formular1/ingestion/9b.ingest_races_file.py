@@ -74,7 +74,7 @@ races_selected_df = races_with_ingestion_date_df.select(col('raceId').alias('rac
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##### Create a Managed Table and Write the output to processed container in parquet format
+# MAGIC ##### Step 4 - Create a Managed Table and Write the output to processed container in parquet format
 
 # COMMAND ----------
 

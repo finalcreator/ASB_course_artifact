@@ -65,11 +65,12 @@ constructor_final_df = add_ingestion_date(constructor_renamed_df)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##### Step 4 Write output to parquet file
+# MAGIC ##### Step 4 - Create a Managed Table and Write output to parquet file
 
 # COMMAND ----------
 
-constructor_final_df.write.mode("overwrite").parquet(f"{processed_folder_path}/constructors")
+# we can now create a managed table in the database we created in "9.create_processed_database"
+constructor_final_df.write.mode("overwrite").format("parquet").saveAsTable("f1_processed.constructors")
 
 # COMMAND ----------
 
