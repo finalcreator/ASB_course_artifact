@@ -1,4 +1,10 @@
 -- Databricks notebook source
+-- MAGIC %python
+-- MAGIC html = """<h1 style="color:Black;text-align:center;font-family:Ariel">Dominant Formula 1 Teams of All Time</h1>"""
+-- MAGIC displayHTML(html)
+
+-- COMMAND ----------
+
 -- To get the dominant teams overall
 SELECT team_name,
        COUNT(1) AS total_races,

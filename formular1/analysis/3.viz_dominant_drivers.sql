@@ -1,5 +1,11 @@
 -- Databricks notebook source
--- to find out how drivers performed overall
+-- MAGIC %python
+-- MAGIC html = """<h1 style="color:Black;text-align:center;font-family:Ariel">Report on Dominant Fomula 1 Drivers</h1>"""
+-- MAGIC displayHTML(html)
+
+-- COMMAND ----------
+
+-- To get the dominant teams overall
 SELECT driver_name,
        COUNT(1) AS total_races,
        SUM(calculated_points) AS total_points,
