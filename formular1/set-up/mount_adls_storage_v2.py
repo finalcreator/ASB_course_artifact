@@ -39,7 +39,7 @@
 # - this will open a form
 # Fill into the form as follows
 # * Scope Name: adfcourseanyistaccdl-scope
-# * Manage Principal: Select > All Users (Storage account must be premium to select the 'Creator' option)
+# * Manage Principal: Select > All Users (Select 'Creator' option if it is premium.)
 # * DNS Name: Goto Key vaults > course-test-key-vault > properties > copy 'Vault URI'
 # * Resource ID: Goto Key vaults > course-test-key-vault > properties > copy 'Resource ID'
 
@@ -118,6 +118,7 @@ def mount_adls(container_name):
 raw_ctnr_name = "raw-ctnr"
 proc_ctnr_name = "processed-ctnr"
 pres_ctnr_name = "presentation-ctnr"
+demo_ctnr_name = "demo-ctnr"
 
 # COMMAND ----------
 
@@ -131,6 +132,10 @@ mount_adls(proc_ctnr_name)
 # COMMAND ----------
 
 mount_adls(pres_ctnr_name)
+
+# COMMAND ----------
+
+mount_adls(demo_ctnr_name)
 
 # COMMAND ----------
 
@@ -153,10 +158,15 @@ dbutils.fs.ls("/mnt/{}/{}".format(storage_account_name, pres_ctnr_name))
 
 # COMMAND ----------
 
+dbutils.fs.ls("/mnt/{}/{}".format(storage_account_name, demo_ctnr_name))
+
+# COMMAND ----------
+
 ## you can unmount containers if you want
 #dbutils.fs.unmount("/mnt/{}/{}".format(storage_account_name, raw_ctnr_name))
 #dbutils.fs.unmount("/mnt/{}/{}".format(storage_account_name, proc_ctnr_name))
 #dbutils.fs.unmount("/mnt/{}/{}".format(storage_account_name, pres_ctnr_name))
+#dbutils.fs.unmount("/mnt/{}/{}".format(storage_account_name, demo_ctnr_name))
 
 # COMMAND ----------
 

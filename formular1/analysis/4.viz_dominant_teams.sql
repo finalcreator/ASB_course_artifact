@@ -1,6 +1,6 @@
 -- Databricks notebook source
 -- MAGIC %python
--- MAGIC html = """<h1 style="color:Black;text-align:center;font-family:Ariel">Dominant Formula 1 Teams of All Time</h1>"""
+-- MAGIC html = """<h1 style="color:Black;text-align:center;font-family:Ariel">Report on Dominant Formula 1 Teams</h1>"""
 -- MAGIC displayHTML(html)
 
 -- COMMAND ----------
